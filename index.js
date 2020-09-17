@@ -1,69 +1,85 @@
-/*
-  EXAMPLE TASK:
-    - Write an Airplane class whose constructor initializes `name` from an argument.
-    - All airplanes built with Airplane should initialize with an `isFlying` property of false.
+/* EXAMPLE TASK:
+    - Write an Airplane constructor that initializes `name` from an argument.
+    - All airplanes built with Airplane should initialize with an `isFlying` of false.
     - Give airplanes the ability to `.takeOff()` and `.land()`:
-        + If a plane takes off, its `isFlying` property gets set to true.
-        + If a plane lands, its `isFlying` property gets set to false.
-*/
+        + If a plane takes off, its `isFlying` property is set to true.
+        + If a plane lands, its `isFlying` property is set to false. */
 
 // EXAMPLE SOLUTION CODE:
-class Airplane {
-  constructor(name) {
-    this.name = name;
-    this.isFlying = false;
-  }
-  takeOff() {
-    this.isFlying = true;
-  }
-  land() {
-    this.isFlying = false;
-  }
-}
+function Airplane(name) {
+  this.name = name;
+  this.isFlying = false;
+};
+Airplane.prototype.takeOff = function () {
+  this.isFlying = true;
+};
+Airplane.prototype.land = function () {
+  this.isFlying = false;
+};
 
-/*
-// 👇 COMPLETE YOUR WORK BELOW 👇
-// 👇 COMPLETE YOUR WORK BELOW 👇
-// 👇 COMPLETE YOUR WORK BELOW 👇
-*/
 
-/*
-  TASK 1
-    - Write a Person class whose constructor initializes `name` and `age` from arguments.
-    - All instances of Person should also initialize with an empty `stomach` array.
+/* 👇 COMPLETE YOUR WORK BELOW 👇 */
+
+/* TASK 1
+    - Write a Person Constructor that initializes `name` and `age` from arguments.
+    - All instances of Person should initialize with an empty `stomach` array.
     - Give instances of Person the ability to `.eat("someFood")`:
         + When eating an edible, it should be pushed into the `stomach`.
         + The `eat` method should have no effect if there are 10 items in the `stomach`.
     - Give instances of Person the ability to `.poop()`:
         + When an instance poops, its `stomach` should empty.
     - Give instances of Person a method `.toString()`:
-        + It should return a string with `name` and `age`. Example: "Mary, 50"
-*/
+        + It should return a string with `name` and `age`. Example: "Mary, 50" */
 
-class Person {
-
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 }
 
-/*
-  TASK 2
-    - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
+Person.prototype.eat = function(someFood) {
+  if (this.stomach.length < 10) { //We only want more food if his stomach isn't "full".
+    this.stomach.push(someFood);
+  }
+};
+
+Person.prototype.poop = function() {
+  this.stomach.length = 0; //Now his stomach is empty again. The example returned an empty array, but I prefer this.
+};
+
+Person.prototype.toString = function() {
+  return `${this.name}, ${this.age}` //Just shows the name and age.
+};
+
+/* TASK 2
+    - Write a Car constructor that initializes `model` and `milesPerGallon` from arguments.
     - All instances built with Car:
-        + should initialize with a `tank` at 0
+        + should initialize with an `tank` at 0
         + should initialize with an `odometer` at 0
     - Give cars the ability to get fueled with a `.fill(gallons)` method. Add the gallons to `tank`.
-    - Give cars ability to `.drive(distance)`. The distance driven:
+    - STRETCH: Give cars ability to `.drive(distance)`. The distance driven:
         + Should cause the `odometer` to go up.
         + Should cause the the `tank` to go down taking `milesPerGallon` into account.
-    - A car which runs out of `fuel` while driving can't drive any more distance:
-        + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
-*/
+    - STRETCH: A car which runs out of `fuel` while driving can't drive any more distance:
+        + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`. */
 
-class Car {
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
+};
 
-}
+Car.prototype.fill = function(gallons) {
+  this.tank += gallons; //Adds the gallons to the tank.
+};
 
-/*
-  TASK 3
+Car.prototype.drive = function(distance) {
+  this.odometer += distance; //Adds the distance to the odometer.
+};
+
+
+/* TASK 3
     - Write a Lambdasian class.
     - Its constructor takes a single argument - an object with the following keys:
         + name
@@ -72,8 +88,7 @@ class Car {
     - Its constructor should initialize `name`, `age` and `location` properties on the instance.
     - Instances of Lambdasian should be able to `.speak()`:
         + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
-        + {name} and {location} of course come from the instance's own properties.
-*/
+        + {name} and {location} of course come from the instance's own properties. */
 class Lambdasian {
 
 }
@@ -141,8 +156,6 @@ class ProjectManager {
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
 
-///////// END OF CHALLENGE /////////
-///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
 if (typeof exports !== 'undefined') {
   module.exports = module.exports || {}
