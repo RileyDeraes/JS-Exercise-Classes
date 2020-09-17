@@ -89,7 +89,13 @@ Car.prototype.drive = function(distance) {
     - Instances of Lambdasian should be able to `.speak()`:
         + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
         + {name} and {location} of course come from the instance's own properties. */
+        
 class Lambdasian {
+  constructor(object) {
+    this.name = object.name;
+    this.age = object.age;
+    this.location = object.location;
+  }
 
 }
 
