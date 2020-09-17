@@ -96,13 +96,13 @@ class Lambdasian {
     this.age = object.age;
     this.location = object.location;
   }
+  
     speak() {
       return `Hello, my name is ${this.name}, and I am from ${this.location}!`
     }
 }
 
-/*
-  TASK 4
+/* TASK 4
     - Write an Instructor class extending Lambdasian.
     - Its constructor takes a single argument - an object with the following keys:
         + All the keys used to initialize instances of Lambdasian.
@@ -113,10 +113,23 @@ class Lambdasian {
     - The constructor should also initialize `specialty`, `favLanguage` and `catchPhrase` properties on the instance.
     - Instructor instances have the following methods:
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
-        + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
-*/
-class Instructor {
+        + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}' */
 
+class Instructor extends Lambdasian {
+  constructor(object) {
+    super(object);
+    this.specialty = object.specialty;
+    this.favLanguage = object.favLanguage;
+    this.catchPhrase = object.catchPhrase;
+  }
+
+  demo(subject) {
+    return `Today we are learning about ${subject}`;
+  }
+
+  grade(student, subject) {
+
+  }
 }
 
 /*
